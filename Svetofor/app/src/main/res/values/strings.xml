@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Svetofor</string>
+    <string name="base_url">https://svetofor.info/api/</string>
+    <string name="choose_number">Выберите номер</string>
+    <string name="catalog_of_goods">КАТАЛОГ ТОВАРОВ</string>
+    <string name="best_sellers">САМЫЕ ПРОДАВАЕМЫЕ ТОВАРЫ</string>
+    <string name="new_goods">НОВИНКИ</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#FDCC2F</color>
+    <color name="colorPrimaryDark">#cecece</color>
+    <color name="colorPrimary">#4CAF50</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="colorGrey">#D1D1D1</color>
+    <color name="colorDarkGrey">#9F9F9F</color>
+    <color name="colorLightGreyF9">#F9F9F9</color>
+    <color name="colorLightGrey">#F1F1F1</color>
+    <color name="colorLightGreyE5">#E5E5E5</color>
+    <color name="colorDarkGrey9E">#9E9E9E</color>
+    <color name="colorDarkGreyF7">#F7F7F7</color>
+
+
+    <color name="generalBackground">#FEC81E</color>
+    <color name="checked">#22ab1e</color>
+    <color name="pressed">#1c4cab</color>
+    <color name="in_plan">#13C1F5</color>
+    <color name="successful_passed">#D1D1D1</color>
+    <color name="in_progress">#FEC81E</color>
+    <color name="warning_red">#8c1913</color>
+    <color name="green_toolbar">#4CAF50</color>
+</resources>

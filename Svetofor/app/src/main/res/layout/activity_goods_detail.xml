@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="15dp"
+    tools:context="com.azhimkulov.azamat.svetofor.screen.MainScreen.GoodsDetail.GoodsDetail">
+
+    <TextView
+        android:id="@+id/tv_goods_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#9F9F9F"/>
+
+    <TextView
+        android:id="@+id/tv_goods_name"
+        android:layout_width="match_parent"
+        android:maxLines="3"
+        android:layout_height="wrap_content"
+        android:textColor="#9F9F9F"/>
+
+    <TextView
+        android:id="@+id/tv_goods_new_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#9F9F9F" />
+
+    <TextView
+        android:id="@+id/tv_goods_old_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#9F9F9F" />
+</LinearLayout>
