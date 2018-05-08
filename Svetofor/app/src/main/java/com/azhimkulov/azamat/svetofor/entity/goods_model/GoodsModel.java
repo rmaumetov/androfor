@@ -56,6 +56,9 @@ public class GoodsModel implements Serializable {
     private String show_yandex_rev;
     private String enable_market_xml;
     private String warranty;
+    private int currency_list_price;
+    private int currency_price;
+    private String full_description;
 //    "installation_details": null,
 //    "addition_labels": null,
 //            "color": null,
@@ -528,5 +531,29 @@ public class GoodsModel implements Serializable {
 
     public void setMain_pair(MainPair main_pair) {
         this.main_pair = main_pair;
+    }
+
+    public int getCurrency_list_price() {
+        return currency_list_price;
+    }
+
+    public void setCurrency_list_price(int currency_list_price) {
+        this.currency_list_price = currency_list_price;
+    }
+
+    public int getCurrency_price() {
+        return currency_price;
+    }
+
+    public void setCurrency_price(int currency_price) {
+        this.currency_price = currency_price;
+    }
+
+    public String getFull_description() {
+        return full_description;
+    }
+
+    public void setFull_description(String full_description) {
+        this.full_description = full_description;
     }
 }

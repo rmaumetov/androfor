@@ -7,19 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.azhimkulov.azamat.svetofor.GlobalVar;
 import com.azhimkulov.azamat.svetofor.R;
@@ -27,7 +26,8 @@ import com.azhimkulov.azamat.svetofor.adapter.RecyclerAdapter;
 import com.azhimkulov.azamat.svetofor.dialog.CustomProgressFragmentDialog;
 import com.azhimkulov.azamat.svetofor.entity.goods_model.GoodsModel;
 import com.azhimkulov.azamat.svetofor.entity.phone_number_model.PhoneNumberModel;
-import com.azhimkulov.azamat.svetofor.screen.CategoryScreen.CategoryActivity;
+import com.azhimkulov.azamat.svetofor.screen.category_screen.CategoryActivity;
+import com.azhimkulov.azamat.svetofor.screen.search_screen.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,6 @@ import java.util.List;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -59,22 +58,20 @@ public class FragmentHome extends Fragment implements FragmentHomeView, View.OnC
     @BindView(R.id.ll_toolbar_subtitle_visible) LinearLayout llToolbar;
     @BindView(R.id.ll_toolbar_subtitle_visible_for_search) LinearLayout llSearch;
     @BindView(R.id.toolbar_subtitle_visible_edit) TextView searchSalePoint;
-    @BindView(R.id.catalog_of_goods)
-    RelativeLayout catalogOfGoods;
-    @BindView(R.id.catalog_of_goods_bottom)
-    RelativeLayout catalogOfGoodsBottom;
+    @BindView(R.id.search_field) LinearLayout searchField;
+    @BindView(R.id.catalog_of_goods) RelativeLayout catalogOfGoods;
+    @BindView(R.id.catalog_of_goods_bottom) RelativeLayout catalogOfGoodsBottom;
+    @BindView(R.id.general_layout) NestedScrollView nestedScrollView;
 
     @BindString(R.string.app_name) String app_name;
     private List<PhoneNumberModel> numberArrayList = new ArrayList<>();
 
     private FragmentHomePresneter fragmentHomePresneter;
     private List<GoodsModel> goodsModels;
-    private RecyclerView.LayoutManager layoutManager;
 
     private CustomProgressFragmentDialog customProgressFragmentDialog;
     private RecyclerAdapter<GoodsModel> recyclerAdapter;
     public static boolean buttonPressed;
-    private RecyclerView.LayoutManager layoutManager2;
     private RecyclerAdapter<GoodsModel> recyclerAdapterNewGoods;
     private static final int REQUEST_PERMISSION = 10;
 
@@ -95,57 +92,43 @@ public class FragmentHome extends Fragment implements FragmentHomeView, View.OnC
         numberArrayList.add(new PhoneNumberModel("+996 (701) 99-44-57", 4, "Ош"));
         numberArrayList.add(new PhoneNumberModel("+996 (704) 93-88-33", 5, "Нарын"));
 
-        layoutManager = new GridLayoutManager(getContext(), 2);
-        layoutManager2 = new GridLayoutManager(getContext(), 2);
+        customProgressFragmentDialog = new CustomProgressFragmentDialog(getContext());
         fragmentHomePresneter = new FragmentHomePresneter(getContext(), this);
-        goodsModels = new ArrayList<>();
-        goodsModels.addAll(GlobalVar.bestSellers);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerAdapter = new RecyclerAdapter<>(GlobalVar.bestSellers, getContext(), R.layout.item_goods);
-        recyclerAdapterNewGoods = new RecyclerAdapter<>(GlobalVar.newGoods, getContext(), R.layout.item_goods);
-        recyclerView.setAdapter(recyclerAdapter);
-        recyclerViewNewGoods.setLayoutManager(layoutManager2);
-        recyclerViewNewGoods.setAdapter(recyclerAdapterNewGoods);
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerViewNewGoods.setNestedScrollingEnabled(false);
+        fragmentHomePresneter.getBestSellers();
 
         close.setOnClickListener(this);
         openFilterDialog.setOnClickListener(this);
         catalogOfGoods.setOnClickListener(this);
         catalogOfGoodsBottom.setOnClickListener(this);
         makeCall.setOnClickListener(this);
+        searchField.setOnClickListener(this);
+        searchSalePoint.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void showLoading() {
-
+        customProgressFragmentDialog.show();
     }
 
     @Override
     public void hideLoading() {
-
+        customProgressFragmentDialog.dismiss();
     }
 
     @Override
     public void errorResponse(String s) {
-
+        hideLoading();
+        nestedScrollView.setVisibility(VISIBLE);
+        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.toolbar_subtitle_visible_close:
-                llSearch.setVisibility(GONE);
-                llToolbar.setVisibility(VISIBLE);
-                openFilterDialog.setVisibility(VISIBLE);
-                recyclerAdapter.setList(goodsModels);
-                recyclerAdapter.notifyDataSetChanged();
-                break;
             case R.id.toolbar_subtitle_visible_iv_filter:
-//                Toast.makeText(this, "Функция на стадии разработки", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), CategoryActivity.class));
                 break;
             case R.id.fab:
@@ -157,12 +140,13 @@ public class FragmentHome extends Fragment implements FragmentHomeView, View.OnC
             case R.id.catalog_of_goods_bottom:
                 startActivity(new Intent(getContext(), CategoryActivity.class));
                 break;
+            case R.id.search_field:
+                startActivity(new Intent(getContext(), SearchActivity.class));
+                break;
+            case R.id.toolbar_subtitle_visible_edit:
+                startActivity(new Intent(getContext(), SearchActivity.class));
+                break;
         }
-    }
-
-    @Override
-    public void setResponseGoods(List<GoodsModel> products) {
-
     }
 
     @Override
@@ -182,10 +166,21 @@ public class FragmentHome extends Fragment implements FragmentHomeView, View.OnC
             fragmentHomePresneter.showDialogView(numberArrayList);
     }
 
-    //    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (buttonPressed)
-//            fragmentHomePresneter.showDialogView(numberArrayList);
-//    }
+    @Override
+    public void setResponseBestSellers(List<GoodsModel> products) {
+        recyclerAdapter = new RecyclerAdapter<>(products, getContext(), R.layout.item_goods);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setAdapter(recyclerAdapter);
+        fragmentHomePresneter.getGoodsNew();
+    }
+
+    @Override
+    public void setResponseNewGoods(List<GoodsModel> products) {
+        recyclerAdapterNewGoods = new RecyclerAdapter<>(products, getContext(), R.layout.item_goods);
+        recyclerViewNewGoods.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerViewNewGoods.setAdapter(recyclerAdapterNewGoods);
+        recyclerViewNewGoods.setNestedScrollingEnabled(false);
+        nestedScrollView.setVisibility(VISIBLE);
+    }
 }

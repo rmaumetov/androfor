@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.azhimkulov.azamat.svetofor.screen.goods_list_activity.GoodsListActivity">
+
+    <!--<include-->
+        <!--layout="@layout/toolbar_search"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        android:elevation="2dp"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <LinearLayout
+            android:id="@+id/toolbar_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/title_toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:layout_marginStart="34dp"
+                android:textAlignment="center"
+                android:ellipsize="end"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/search_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="17dp"
+                android:src="@drawable/ic_search_white_24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_search_toolbar"
+            android:layout_margin="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/search_return_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_arrow_back_grey_24dp"/>
+
+            <EditText
+                android:id="@+id/et_search_key"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:background="@color/white"
+                android:textSize="16sp"
+                android:hint="Поиск.."
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textColorHint="#D1D1D1"
+                tools:ignore="RtlSymmetry"/>
+
+            <ImageView
+                android:id="@+id/clear_search_key"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_clear_grey_24dp"
+                />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_goods"
+        android:layout_marginTop="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

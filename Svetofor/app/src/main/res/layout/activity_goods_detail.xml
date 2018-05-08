@@ -5,31 +5,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    android:padding="15dp"
-    tools:context="com.azhimkulov.azamat.svetofor.screen.MainScreen.GoodsDetail.GoodsDetail">
+    android:id="@+id/general_layout"
+    tools:context="com.azhimkulov.azamat.svetofor.screen.main_screen.goods_detail.GoodsDetailActivity">
 
-    <TextView
-        android:id="@+id/tv_goods_code"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#9F9F9F"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_goods_name"
-        android:layout_width="match_parent"
-        android:maxLines="3"
-        android:layout_height="wrap_content"
-        android:textColor="#9F9F9F"/>
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tv_goods_new_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#9F9F9F" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_toolbar"/>
 
-    <TextView
-        android:id="@+id/tv_goods_old_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#9F9F9F" />
+        <LinearLayout
+            android:id="@+id/fragment_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
 </LinearLayout>
+

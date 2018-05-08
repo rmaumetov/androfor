@@ -32,12 +32,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
             Request request = original.newBuilder()
-                    .header("Authorization", "TOKEN")
+                    .header("Authorization", context.getResources().getString(R.string.token))
                     .method(original.method(), original.body())
                     .build();
             return chain.proceed(request);

@@ -10,5 +10,6 @@ import java.util.List;
  */
 
 interface FragmentHomeView extends LoadingView {
-    void setResponseGoods(List<GoodsModel> products);
+    void setResponseBestSellers(List<GoodsModel> products);
+    void setResponseNewGoods(List<GoodsModel> products);
 }

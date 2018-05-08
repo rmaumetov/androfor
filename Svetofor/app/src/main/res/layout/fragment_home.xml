@@ -6,116 +6,122 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/general_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <include
                 layout="@layout/toolbar_search_visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <RelativeLayout
-        android:id="@+id/catalog_of_goods"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/catalog_backgroung"
-        android:orientation="horizontal"
-        android:layout_marginTop="28dp"
-        android:layout_marginStart="8dp"
-        android:elevation="2dp"
-        android:layout_marginEnd="8dp"
-        android:padding="10dp">
+                android:id="@+id/catalog_of_goods"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/catalog_backgroung"
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="8dp"
+                android:elevation="2dp"
+                android:layout_marginEnd="8dp"
+                android:padding="10dp"
+                android:visibility="gone">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_category_white_1126"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_category_white_1126"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:layout_centerVertical="true"
-            android:textSize="18sp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/catalog_of_goods"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/catalog_of_goods"/>
 
-    </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/best_sellers"
-            android:textColor="#181C21"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="18sp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:id="@+id/rv_good_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/new_goods"
-            android:textColor="#181C21"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="18sp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:id="@+id/rv_new_good_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <RelativeLayout
-            android:id="@+id/catalog_of_goods_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/catalog_backgroung"
-            android:orientation="horizontal"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="28dp"
-            android:layout_marginStart="8dp"
-            android:elevation="2dp"
-            android:layout_marginEnd="8dp"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:src="@drawable/ic_category_white_1126"/>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/catalog_of_goods"/>
+                android:text="@string/best_sellers"
+                android:textColor="#181C21"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="18sp" />
 
-        </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:id="@+id/rv_good_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/new_goods"
+                android:textColor="#181C21"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="18sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:id="@+id/rv_new_good_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                android:id="@+id/catalog_of_goods_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/catalog_backgroung"
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="28dp"
+                android:layout_marginStart="8dp"
+                android:elevation="2dp"
+                android:layout_marginEnd="8dp"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_category_white_1126"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/catalog_of_goods"/>
+
+            </RelativeLayout>
 
     </LinearLayout>
 

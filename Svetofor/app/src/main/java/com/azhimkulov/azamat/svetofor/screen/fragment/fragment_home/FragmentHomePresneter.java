@@ -38,14 +38,41 @@ public class FragmentHomePresneter {
 
     void getPermission(List<PhoneNumberModel> numberArrayList)
     {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED)
             showDialogView(numberArrayList);
-        }
         else
         {
             int REQUEST_PERMISSION = 10;
             ActivityCompat.requestPermissions((Activity)context, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PERMISSION);
         }
+    }
+
+    void getBestSellers()
+    {
+
+        App.getGoodsApi().getBestSellers(1,12)
+                .compose(new AsyncTransformer<>())
+                .doOnSubscribe(__ -> fragmentHomeView.showLoading())
+                .subscribe(this::responseBestSellers, this::error);
+    }
+    private void responseBestSellers(ResponseModel<List<GoodsModel>> listResponseModel) {
+        if (listResponseModel.getMessage()==null&&listResponseModel.getProducts()!=null)
+            fragmentHomeView.setResponseBestSellers(listResponseModel.getProducts());
+        else fragmentHomeView.errorResponse(listResponseModel.getMessage());
+    }
+
+
+    void getGoodsNew()
+    {
+        App.getGoodsApi().getNewGoods(1,12)
+                .compose(new AsyncTransformer<>())
+                .doOnComplete(() -> fragmentHomeView.hideLoading())
+                .subscribe(this::responseNewGoods, this::error);
+    }
+    private void responseNewGoods(ResponseModel<List<GoodsModel>> listResponseModel) {
+        if (listResponseModel.getMessage()==null&&listResponseModel.getProducts()!=null)
+            fragmentHomeView.setResponseNewGoods(listResponseModel.getProducts());
+        else fragmentHomeView.errorResponse(listResponseModel.getMessage());
     }
 
     void showDialogView(List<PhoneNumberModel> numberList)
@@ -66,5 +93,9 @@ public class FragmentHomePresneter {
         mAdapter = new RecyclerAdapter<>(numberList, context, R.layout.seleted_picker_item);
         mRecyclerView.setAdapter(mAdapter);
         alertDialog.show();
+    }
+
+    private void error(Throwable throwable) {
+
     }
 }

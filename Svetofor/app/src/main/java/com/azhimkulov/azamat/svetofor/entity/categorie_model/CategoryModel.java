@@ -1,10 +1,12 @@
 package com.azhimkulov.azamat.svetofor.entity.categorie_model;
 
+import java.io.Serializable;
+
 /**
  * Created by azamat  on 09.04.18.
  */
 
-public class CategorieModel {
+public class CategoryModel implements Serializable {
     private String category_id;
     private String parent_id;
     private String id_path;

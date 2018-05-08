@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#F5F5F5"
-    tools:context="com.azhimkulov.azamat.svetofor.screen.MainScreen.MainActivity">
+    tools:context="com.azhimkulov.azamat.svetofor.screen.main_screen.MainActivity">
 
     <!--<android.support.v7.widget.RecyclerView-->
         <!--android:id="@+id/rv_good_item"-->

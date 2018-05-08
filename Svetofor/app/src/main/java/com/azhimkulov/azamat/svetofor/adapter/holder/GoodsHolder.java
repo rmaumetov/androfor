@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.azhimkulov.azamat.svetofor.R;
@@ -27,6 +28,8 @@ public class GoodsHolder extends RecyclerView.ViewHolder {
     public TextView goodsOldCount;
     @BindView(R.id.item_goods_linearL)
     public LinearLayout goodsLinearL;
+    @BindView(R.id.iv_photo_progress)
+    public ProgressBar progressBar;
     @BindView(R.id.iv_photo)
     public ImageView goodsImage;
 

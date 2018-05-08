@@ -1,49 +1,24 @@
-package com.azhimkulov.azamat.svetofor.screen.MainScreen;
+package com.azhimkulov.azamat.svetofor.screen.main_screen;
 
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.azhimkulov.azamat.svetofor.GlobalVar;
 import com.azhimkulov.azamat.svetofor.R;
-import com.azhimkulov.azamat.svetofor.adapter.RecyclerAdapter;
 import com.azhimkulov.azamat.svetofor.dialog.CustomProgressFragmentDialog;
-import com.azhimkulov.azamat.svetofor.entity.goods_model.GoodsModel;
-import com.azhimkulov.azamat.svetofor.entity.phone_number_model.PhoneNumberModel;
-import com.azhimkulov.azamat.svetofor.screen.CategoryScreen.CategoryActivity;
-import com.azhimkulov.azamat.svetofor.screen.SearchScreen.SearchActivity;
 import com.azhimkulov.azamat.svetofor.screen.fragment.fragment_category.FragmentCategory;
 import com.azhimkulov.azamat.svetofor.screen.fragment.fragment_home.FragmentHome;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -54,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     private CustomProgressFragmentDialog customProgressFragmentDialog;
     public static boolean buttonPressed;
+    FragmentCategory fragmentCategory;
+    private Integer level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +52,14 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        fragmentCategory = new FragmentCategory(this);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()) {
             case R.id.bottom_nav_home:
                 fragmentTransaction.replace(R.id.main_container, new FragmentHome());
                 break;
             case R.id.bottom_nav_category:
-                fragmentTransaction.replace(R.id.main_container, new FragmentCategory());
+                fragmentTransaction.replace(R.id.main_container, fragmentCategory);
         }
         fragmentTransaction.commitAllowingStateLoss();
         return true;
@@ -102,4 +80,24 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed() {
+       AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Выход")
+                .setMessage("Вы уверены хотите выйти?")
+                .setIcon(R.drawable.ic_info_black_24dp)
+                .setCancelable(true)
+                .setNeutralButton("Нет", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Да", (dialog, which) -> finish());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @Override
+    public void changeFragmentForChild(String categoryId, int categoryLevel) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentCategory fragmentCategory1 = new FragmentCategory(this, categoryId, categoryLevel);
+        fragmentTransaction.replace(R.id.main_container, fragmentCategory1);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 }

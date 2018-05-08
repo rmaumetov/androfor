@@ -17,10 +17,12 @@
             android:id="@+id/tv_category_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:textSize="16sp"
-            android:textColor="#727272"
-            android:fontFamily="@font/roboto"
+            android:padding="19dp"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:maxLines="1"
+            android:text="Наручные часы, сумки и аксессуары"
+            android:fontFamily="@font/roboto_medium"
             android:textStyle="bold"
             android:layout_weight="1"/>
 
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+            android:src="@drawable/ic_keyboard_arrow_right_grey_24dp"/>
 
     </LinearLayout>
 
@@ -45,7 +47,8 @@
         android:layout_height="wrap_content"
         app:el_expanded="false"
         app:el_duration="800"
-        app:el_parallax="0.5">
+        app:el_parallax="0.5"
+        android:visibility="gone">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_category_expandable"

@@ -1,9 +1,8 @@
 package com.azhimkulov.azamat.svetofor;
 
 import android.content.Context;
-import android.util.ArraySet;
 
-import com.azhimkulov.azamat.svetofor.entity.categorie_model.CategorieModel;
+import com.azhimkulov.azamat.svetofor.entity.categorie_model.CategoryModel;
 import com.azhimkulov.azamat.svetofor.entity.goods_model.GoodsModel;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -19,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 public class GlobalVar {
 
     public static List<GoodsModel> bestSellers = new ArrayList<>();
-    public static List<CategorieModel> categorieModelList = new ArrayList<>();
-    public static List<CategorieModel> firstLevelCategories = new ArrayList<>();
-    public static List<CategorieModel> secondLevelCategories = new ArrayList<>();
-    public static List<CategorieModel> thirdLevelCategories = new ArrayList<>();
+    public static List<CategoryModel> categorieModelList = new ArrayList<>();
+    public static List<CategoryModel> firstLevelCategories = new ArrayList<>();
+    public static List<CategoryModel> secondLevelCategories = new ArrayList<>();
+    public static List<CategoryModel> thirdLevelCategories = new ArrayList<>();
     public static List<GoodsModel> newGoods=new ArrayList<>();
 
     public static Picasso.Builder getPicasso (Context context)

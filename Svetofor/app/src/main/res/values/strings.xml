@@ -5,4 +5,8 @@
     <string name="catalog_of_goods">КАТАЛОГ ТОВАРОВ</string>
     <string name="best_sellers">САМЫЕ ПРОДАВАЕМЫЕ ТОВАРЫ</string>
     <string name="new_goods">НОВИНКИ</string>
+    <string name="old_price">Старая цена</string>
+    <string name="new_price">Новая цена</string>
+    <string name="zip_code">КОД:</string>
+    <string name="goods_speciality">ОСОБЕННОСТИ</string>
 </resources>

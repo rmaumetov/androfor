@@ -31,24 +31,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".screen.MainScreen.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
-        <activity
-            android:name=".screen.SearchScreen.SearchActivity"
+            android:name=".screen.main_screen.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".screen.MainScreen.GoodsDetail.GoodsDetail" />
-        <activity android:name=".screen.PreloadActivity.PreloadActivity">
+        <activity
+            android:name=".screen.search_screen.SearchActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".screen.main_screen.goods_detail.GoodsDetailActivity" />
+        <activity android:name=".screen.preload_activity.PreloadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.CategoryScreen.CategoryActivity"></activity>
+        <activity android:name=".screen.category_screen.CategoryActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".screen.goods_list_activity.GoodsListActivity"></activity>
     </application>
 
 </manifest>

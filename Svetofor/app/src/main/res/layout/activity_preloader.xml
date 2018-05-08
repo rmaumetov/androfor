@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.azhimkulov.azamat.svetofor.screen.PreloadActivity.PreloadActivity">
+    tools:context="com.azhimkulov.azamat.svetofor.screen.preload_activity.PreloadActivity">
 
     <ImageView
         android:layout_width="match_parent"
